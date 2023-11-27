@@ -113,7 +113,7 @@ def main_game_loop():
             
             print(result_str)
             # Display winner's name and score on the screen
-            cv2.putText(img, result_str.zfill(2), (550, 265), cv2.FONT_HERSHEY_COMPLEX, 1.5, (255, 255, 255), 5)
+            cv2.putText(img, result_str, (550, 265), cv2.FONT_HERSHEY_COMPLEX, 1.5, (255, 255, 255), 5)
             cv2.putText(img, str(winner_score).zfill(2), (585, 360), cv2.FONT_HERSHEY_COMPLEX, 2.5, (200, 0, 200), 5)
         else:
             if ballPos[1] >= 500 or ballPos[1] <= 10:
@@ -134,11 +134,13 @@ def main_game_loop():
         cv2.imshow("Image", img)
         key = cv2.waitKey(1)
         if key == ord('r'):
+            # Clear result outputs
+            cv2.putText(img, result_str, (550, 265), cv2.FONT_HERSHEY_COMPLEX, 1.5, (185,110,206), 5)
+            cv2.putText(img, str(winner_score).zfill(2), (585, 360), cv2.FONT_HERSHEY_COMPLEX, 2.5, (255, 255, 255), 5)
+            cv2.Text
             # Reset game values
             ballPos, speedX, speedY, gameOver, scores = initialize_game_values()
             players = get_player_names()
-            # cv2.putText(img, "", (550, 265), cv2.FONT_HERSHEY_COMPLEX, 1.5, (255, 255, 255), 5)
-            # cv2.putText(img, "", (585, 360), cv2.FONT_HERSHEY_COMPLEX, 2.5, (200, 0, 200), 5)
 
 if __name__ == "__main__":
     main_game_loop()
